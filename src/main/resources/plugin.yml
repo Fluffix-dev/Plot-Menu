@@ -1,0 +1,7 @@
+name: PlotMenu
+author: FluffixYT
+version: 1.0.0
+api-version: 1.21
+main: dev.fluffix.plotmenu.plugin.PlotPlugin
+commands:
+  plotmenu:
