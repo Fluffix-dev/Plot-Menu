@@ -1,0 +1,174 @@
+{
+  "menus": {
+    "main": {
+      "title": "<green>PlotSquared Menü</green>",
+      "size": 54,
+      "fill": { "material": "GRAY_STAINED_GLASS_PANE", "name": " " },
+      "items": [
+        {
+          "slot": 10,
+          "icon": { "material": "GRASS_BLOCK", "glow": true },
+          "name": "<green>Deine Plots</green>",
+          "lore": [
+            "<gray>Verwalte deine vorhandenen Grundstücke.</gray>",
+            "<dark_gray>➜</dark_gray> <white>Klicke zum Öffnen</white>"
+          ],
+          "open_menu": "claims"
+        },
+        {
+          "slot": 12,
+          "icon": { "material": "OAK_LOG" },
+          "name": "<green>Welten & Teleport</green>",
+          "lore": [
+            "<gray>Teleportiere zu Plot-Welten und Spawn.</gray>",
+            "<dark_gray>➜</dark_gray> <white>Klicke zum Öffnen</white>"
+          ],
+          "open_menu": "worlds"
+        },
+        {
+          "slot": 14,
+          "icon": { "material": "ENDER_EYE" },
+          "name": "<green>Flags & Einstellungen</green>",
+          "lore": [
+            "<gray>Setze Flags und Privatsphäre-Einstellungen.</gray>",
+            "<dark_gray>➜</dark_gray> <white>Klicke zum Öffnen</white>"
+          ],
+          "open_menu": "flags"
+        },
+        {
+          "slot": 16,
+          "icon": { "material": "PLAYER_HEAD" },
+          "name": "<green>Team & Helfer</green>",
+          "lore": [
+            "<gray>Helfer verwalten und Rechte setzen.</gray>",
+            "<dark_gray>➜</dark_gray> <white>Klicke zum Öffnen</white>"
+          ],
+          "open_menu": "members"
+        }
+      ],
+      "navigation": {
+        "close": { "slot": 49, "material": "BARRIER", "name": "<red>Schließen</red>" }
+      }
+    },
+    "claims": {
+      "title": "<yellow>Deine Plots</yellow>",
+      "size": 54,
+      "fill": { "material": "BLACK_STAINED_GLASS_PANE", "name": " " },
+      "items": [
+        {
+          "slot": 10,
+          "icon": { "material": "MAP" },
+          "name": "<green>Neues Plot beanspruchen</green>",
+          "lore": [
+            "<gray>Beanspruche das Plot, auf dem du stehst.</gray>",
+            "<dark_gray>Befehl:</dark_gray> <white>/plot claim</white>"
+          ],
+          "actions": ["command:/plot claim"]
+        },
+        {
+          "slot": 12,
+          "icon": { "material": "ENDER_PEARL" },
+          "name": "<green>Zum Plot teleportieren</green>",
+          "lore": [
+            "<gray>Teleportiere zu einem deiner Plots.</gray>",
+            "<dark_gray>Platzhalter:</dark_gray> <white><plot_id></white>"
+          ],
+          "actions": ["prompt:plot_id", "command:/plot tp {plot_id}"]
+        },
+        {
+          "slot": 14,
+          "icon": { "material": "RED_DYE" },
+          "name": "<red>Plot löschen</red>",
+          "lore": [
+            "<gray>Löscht dauerhaft das aktuelle Plot.</gray>",
+            "<red>Achtung: Dieser Vorgang kann nicht rückgängig gemacht werden!</red>"
+          ],
+          "permission": "plotsquared.admin.delete",
+          "actions": ["confirm", "command:/plot delete"]
+        },
+        {
+          "slot": 16,
+          "icon": { "material": "WRITABLE_BOOK" },
+          "name": "<green>Plot umbenennen</green>",
+          "lore": [
+            "<gray>Setzt den Plot-Namen.</gray>",
+            "<dark_gray>Neuer Name:</dark_gray> <white><name></white>"
+          ],
+          "actions": ["prompt:name", "command:/plot set name {name}"]
+        }
+      ],
+      "navigation": {
+        "back": { "slot": 45, "material": "ARROW", "name": "<yellow>Zurück</yellow>" },
+        "close": { "slot": 49, "material": "BARRIER", "name": "<red>Schließen</red>" }
+      }
+    },
+    "worlds": {
+      "title": "<yellow>Welten & Teleport</yellow>",
+      "size": 54,
+      "fill": { "material": "BLACK_STAINED_GLASS_PANE", "name": " " },
+      "items": [
+        { "slot": 10, "icon": { "material": "GRASS_BLOCK" }, "name": "<green>Plotwelt (Normal)</green>", "actions": ["command:/plot visit world"] },
+        { "slot": 12, "icon": { "material": "SNOW_BLOCK" }, "name": "<aqua>Schnee-Plotwelt</aqua>", "actions": ["command:/plot visit world_snow"] },
+        { "slot": 14, "icon": { "material": "NETHERRACK" }, "name": "<red>Nether-Plotwelt</red>", "actions": ["command:/plot visit world_nether"] },
+        { "slot": 16, "icon": { "material": "COMPASS" }, "name": "<green>Spawn</green>", "actions": ["command:/spawn"] }
+      ],
+      "navigation": {
+        "back": { "slot": 45, "material": "ARROW", "name": "<yellow>Zurück</yellow>" },
+        "close": { "slot": 49, "material": "BARRIER", "name": "<red>Schließen</red>" }
+      }
+    },
+    "flags": {
+      "title": "<yellow>Flags & Einstellungen</yellow>",
+      "size": 54,
+      "fill": { "material": "BLACK_STAINED_GLASS_PANE", "name": " " },
+      "items": [
+        {
+          "slot": 10,
+          "icon": { "material": "OAK_DOOR" },
+          "name": "<green>Privat / Öffentlich</green>",
+          "lore": ["<gray>Schalte dein Plot privat oder öffentlich.</gray>"],
+          "actions": ["command:/plot toggle deny-entrance"]
+        },
+        {
+          "slot": 12,
+          "icon": { "material": "PAINTING" },
+          "name": "<green>Banner & Biome</green>",
+          "lore": ["<gray>Biome setzen und Banner platzieren.</gray>"],
+          "actions": ["prompt:biome", "command:/plot set biome {biome}"]
+        },
+        {
+          "slot": 14,
+          "icon": { "material": "REPEATER" },
+          "name": "<green>Redstone</green>",
+          "lore": ["<gray>Aktiviere/Deaktiviere Redstone auf deinem Plot.</gray>"],
+          "actions": ["prompt:on_off", "command:/plot flag set redstone {on_off}"]
+        }
+      ],
+      "navigation": {
+        "back": { "slot": 45, "material": "ARROW", "name": "<yellow>Zurück</yellow>" },
+        "close": { "slot": 49, "material": "BARRIER", "name": "<red>Schließen</red>" }
+      }
+    },
+    "members": {
+      "title": "<yellow>Team & Helfer</yellow>",
+      "size": 54,
+      "fill": { "material": "BLACK_STAINED_GLASS_PANE", "name": " " },
+      "items": [
+        { "slot": 10, "icon": { "material": "PLAYER_HEAD" }, "name": "<green>Helfer hinzufügen</green>", "actions": ["prompt:player", "command:/plot trust {player}"] },
+        { "slot": 12, "icon": { "material": "IRON_SWORD" }, "name": "<red>Helfer entfernen</red>", "actions": ["prompt:player", "command:/plot untrust {player}"] },
+        { "slot": 14, "icon": { "material": "BOOK" }, "name": "<green>Liste Helfer</green>", "actions": ["command:/plot trusted"] }
+      ],
+      "navigation": {
+        "back": { "slot": 45, "material": "ARROW", "name": "<yellow>Zurück</yellow>" },
+        "close": { "slot": 49, "material": "BARRIER", "name": "<red>Schließen</red>" }
+      }
+    }
+  },
+  "placeholders": {
+    "plot_id": "z.B. 12;34",
+    "biome": "z.B. PLAINS",
+    "on_off": "on|off",
+    "name": "MeinPlot",
+    "player": "Spielername"
+  }
+}

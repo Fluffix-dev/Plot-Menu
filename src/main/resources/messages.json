@@ -1,0 +1,15 @@
+{
+  "prefix": "<gray>[<green>Plots</green>]</gray> ",
+  "menu_opened": "<gray>Menü geöffnet.</gray>",
+  "no_permission": "<red>Dazu hast du keine Rechte.</red>",
+  "not_on_plot": "<red>Du befindest dich auf keinem Plot.</red>",
+  "plot_claimed": "<green>Plot erfolgreich beansprucht!</green>",
+  "plot_deleted": "<red>Plot wurde gelöscht.</red>",
+  "input_required": "<yellow>Bitte gib <gold>%key%</gold> an.</yellow>",
+  "input_cancelled": "<red>Eingabe abgebrochen.</red>",
+  "confirm_title": "<yellow>Bist du sicher?</yellow>",
+  "confirm_yes": "<green>Ja</green>",
+  "confirm_no": "<red>Nein</red>",
+  "teleported": "<green>Teleportiert zu <gold>%target%</gold>.</green>",
+  "error": "<red>Ein Fehler ist aufgetreten. (<gray>%detail%</gray>)</red>"
+}
