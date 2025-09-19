@@ -57,7 +57,6 @@ public class MenuService implements Listener {
         }
         Inventory inv = buildInventory(p, menus.get(menuKey));
         p.openInventory(inv);
-        p.sendMessage(msg.getComponent("menu_opened"));
     }
 
     public void handleClick(Player p, JsonNode menuNode, int slot) {
