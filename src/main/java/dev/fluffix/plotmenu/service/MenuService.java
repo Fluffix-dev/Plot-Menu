@@ -30,7 +30,6 @@ import java.util.stream.Collectors;
  * (Bukkit#createInventory(InventoryHolder, int, Component)).
  */
 public class MenuService implements Listener {
-    private final PlotMenuPlugin plugin;
     private final ObjectNode root;
     private final MessageHandler msg;
     private final MiniMessage mm = MiniMessage.miniMessage();
@@ -38,18 +37,17 @@ public class MenuService implements Listener {
     private final Map<UUID, PromptSession> prompts = new HashMap<>();
     private final Map<UUID, ConfirmSession> confirms = new HashMap<>();
 
-    public MenuService(PlotMenuPlugin plugin, ObjectNode menuRoot, MessageHandler msg) {
-        this.plugin = plugin;
+    public MenuService(ObjectNode menuRoot, MessageHandler msg) {
         this.root = menuRoot;
         this.msg = msg;
     }
 
     public void register() {
-        Bukkit.getPluginManager().registerEvents(new MenuListener(this, msg), plugin);
-        Bukkit.getPluginManager().registerEvents(new ChatListener(this, msg), plugin);
+        Bukkit.getPluginManager().registerEvents(new MenuListener(this, msg), PlotMenuPlugin.getInstance());
+        Bukkit.getPluginManager().registerEvents(new ChatListener(this, msg), PlotMenuPlugin.getInstance());
     }
 
-    public void unregister() { HandlerList.unregisterAll(plugin); }
+    public void unregister() { HandlerList.unregisterAll(); }
 
     public void open(Player p, String menuKey) {
         JsonNode menus = root.get("menus");

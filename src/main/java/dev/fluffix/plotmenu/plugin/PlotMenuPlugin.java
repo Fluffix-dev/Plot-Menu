@@ -42,7 +42,7 @@ public class PlotMenuPlugin extends JavaPlugin implements Listener {
             JsonFileBuilder json = new JsonFileBuilder();
             json.loadFromFile(new File(getDataFolder(), "menu.json"));
 
-            menuService = new MenuService(this, json.getRootNode(), messages);
+            menuService = new MenuService(json.getRootNode(), messages);
             menuService.register();
 
             getCommand("plotmenu").setExecutor((sender, cmd, label, args) -> {
@@ -64,7 +64,7 @@ public class PlotMenuPlugin extends JavaPlugin implements Listener {
 
             PluginLogger.printWithLabel("PLOT-MENU","Das Plugin wurde erfolgreich geladen (" + getInstance().getPluginMeta().getVersion() + ")","GREEN");
         } catch (Exception ex) {
-            getLogger().severe("Fehler beim Laden: " + ex.getMessage());
+            PluginLogger.printWithLabel("PLOT-MENU","Das Plugin hat ein Fehler (" + getInstance().getPluginMeta().getVersion() + ") " + ex.getMessage(),"GREEN");
             getServer().getPluginManager().disablePlugin(this);
         }
     }
@@ -72,6 +72,8 @@ public class PlotMenuPlugin extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         instance = null;
+
+        PluginLogger.printWithLabel("PLOT-MENU","Das Plot-Menu wird heruntergefahren, Daten werden gespeichert","RED");
     }
 
 
