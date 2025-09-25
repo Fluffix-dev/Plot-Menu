@@ -53,6 +53,7 @@ public class MenuService implements Listener {
         JsonNode menus = root.get("menus");
         if (menus == null || menus.get(menuKey) == null) {
             p.sendMessage(msg.getComponent("error", Map.of("detail", "Menu '" + menuKey + "' nicht gefunden")));
+            p.closeInventory();
             return;
         }
         Inventory inv = buildInventory(p, menus.get(menuKey));
@@ -79,7 +80,6 @@ public class MenuService implements Listener {
         }
     }
 
-    /** Suche Menü anhand des *Component*-Titels (MiniMessage). */
     public JsonNode findMenuByTitle(Component title) {
         JsonNode menus = root.get("menus");
         if (menus == null) return null;
@@ -95,7 +95,6 @@ public class MenuService implements Listener {
         return null;
     }
 
-    /** Bequeme Überladung, falls irgendwo noch ein String-Titel reinkommt. */
     public JsonNode findMenuByTitle(String miniMessageTitle) {
         return findMenuByTitle(mm.deserialize(miniMessageTitle));
     }
@@ -106,7 +105,6 @@ public class MenuService implements Listener {
 
         Component title = mm.deserialize(titleRaw);
 
-        // WICHTIG: Paper-Overload mit Component verwenden
         Inventory inv = Bukkit.createInventory(new MenuHolder(title), size, title);
 
         if (menuNode.has("fill")) {
